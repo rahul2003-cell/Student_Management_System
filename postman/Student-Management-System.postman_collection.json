@@ -1,0 +1,157 @@
+{
+  "info": {
+    "name": "Student Management System API",
+    "description": "REST API collection for the Student Management System (Spring Boot + MySQL). Base URL uses the {{baseUrl}} variable — defaults to http://localhost:8080/api.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api" },
+    { "key": "studentId", "value": "1" },
+    { "key": "courseId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Rahul\",\n  \"lastName\": \"Sharma\",\n  \"email\": \"rahul.sharma@example.com\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"2002-05-14\",\n  \"address\": \"123 MG Road, Hyderabad\",\n  \"course\": \"B.Tech\",\n  \"enrollmentDate\": \"2023-06-01\",\n  \"status\": \"ACTIVE\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/v1/students", "host": ["{{baseUrl}}"], "path": ["v1", "students"] }
+          }
+        },
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/v1/students", "host": ["{{baseUrl}}"], "path": ["v1", "students"] }
+          }
+        },
+        {
+          "name": "Search Students",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/students?search=rahul",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "students"],
+              "query": [{ "key": "search", "value": "rahul" }]
+            }
+          }
+        },
+        {
+          "name": "Filter Students by Course",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/students?course=B.Tech",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "students"],
+              "query": [{ "key": "course", "value": "B.Tech" }]
+            }
+          }
+        },
+        {
+          "name": "Filter Students by Status",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/students?status=ACTIVE",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "students"],
+              "query": [{ "key": "status", "value": "ACTIVE" }]
+            }
+          }
+        },
+        {
+          "name": "Get Student By ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/v1/students/{{studentId}}", "host": ["{{baseUrl}}"], "path": ["v1", "students", "{{studentId}}"] }
+          }
+        },
+        {
+          "name": "Update Student",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Rahul\",\n  \"lastName\": \"Sharma\",\n  \"email\": \"rahul.sharma@example.com\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"2002-05-14\",\n  \"address\": \"123 MG Road, Hyderabad\",\n  \"course\": \"B.Tech\",\n  \"status\": \"ACTIVE\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/v1/students/{{studentId}}", "host": ["{{baseUrl}}"], "path": ["v1", "students", "{{studentId}}"] }
+          }
+        },
+        {
+          "name": "Delete Student",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/v1/students/{{studentId}}", "host": ["{{baseUrl}}"], "path": ["v1", "students", "{{studentId}}"] }
+          }
+        },
+        {
+          "name": "Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/v1/students/dashboard/stats", "host": ["{{baseUrl}}"], "path": ["v1", "students", "dashboard", "stats"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseName\": \"B.Tech\",\n  \"durationMonths\": 48,\n  \"feeAmount\": 400000,\n  \"description\": \"Bachelor of Technology\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/v1/courses", "host": ["{{baseUrl}}"], "path": ["v1", "courses"] }
+          }
+        },
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/v1/courses", "host": ["{{baseUrl}}"], "path": ["v1", "courses"] }
+          }
+        },
+        {
+          "name": "Get Course By ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/v1/courses/{{courseId}}", "host": ["{{baseUrl}}"], "path": ["v1", "courses", "{{courseId}}"] }
+          }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseName\": \"B.Tech\",\n  \"durationMonths\": 48,\n  \"feeAmount\": 420000,\n  \"description\": \"Bachelor of Technology (updated fee)\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/v1/courses/{{courseId}}", "host": ["{{baseUrl}}"], "path": ["v1", "courses", "{{courseId}}"] }
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/v1/courses/{{courseId}}", "host": ["{{baseUrl}}"], "path": ["v1", "courses", "{{courseId}}"] }
+          }
+        }
+      ]
+    }
+  ]
+}
