@@ -1,7 +1,5 @@
 # Student Management System
 
-Project #1 of the "Top Resume Projects for Java" series — a full-stack student
-records system for a college registrar's office.
 
 **Stack:** Java 8 · Spring Boot 2.7 · Spring Data JPA · MySQL 8 · React 18 ·
 Axios · React Router · Postman (API collection included)
